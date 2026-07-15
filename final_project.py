@@ -81,21 +81,22 @@ class goober:
   def __init__(self,x,y,rect):
     self.x = x
     self.y = y
-    self.rect = rect
+    self.rect = self.rect = pygame.rect.Rect((5, 26, 16, 16))
   
-  def up(self):
-    self.y += 32
-  def rt(self):
-    self.x += 32
-  def dn(self):
-    self.y -= 32
-  def lt(self):
-    self.y -= 32
+  def movement(self):
+    key = pygame.key.get_pressed()
+    if key[pygame.K_LEFT]:
+      self.rect.move_ip(-1, 0)
+    if key[pygame.K_RIGHT]:
+      self.rect.move_ip(1, 0)
+    if key[pygame.K_UP]:
+      self.rect.move_ip(0, -1)
+    if key[pygame.K_DOWN]:
+      self.rect.move_ip(0, 1)
+    
+  def render(self, surface):
+    pygame.draw.rect(surface, (0, 0, 128), self.rect)
 
-
-def levelOneSetUp():
-  #make it spawn in all the rects/wall objects for collsion (wall is rect that stops you, box is rect that moves when player pushes it)
-  print('')
 
 def boxPusherMain():
   #Display setup
@@ -104,11 +105,13 @@ def boxPusherMain():
   pygame.display.get_surface()
 
   clock = pygame.time.Clock()
-  
+  pygame.init()
+
+
   #Create instances of objects
   player = goober(50,50,70)
 
-  print('WASD to move')
+
 
   #Main loop
   gameCont = 0
@@ -122,9 +125,8 @@ def boxPusherMain():
     rect = pygame.Rect(100, 100, 101, 101)
     gameScreen.blit(floor,(0,0))
 
-    if str(pygame.event.get()).find('w') >= 0:
-      player.up
-      print(player.y)
+    player.movement()
+    player.render(gameScreen)
 
     pygame.display.flip()
     clock.tick(60)
