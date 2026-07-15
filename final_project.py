@@ -55,13 +55,79 @@ TRACK C: YOUR OWN IDEA
 =============================== PLAN FIRST ====================================
 Before you write code, fill this in (it will keep you honest all week):
 
-  MY PROJECT: (one sentence)
-  THE PIECES I NEED TO BUILD: (list 3-6 functions or parts)
-  WHAT I WILL DEMO AT SHOWCASE: (the 60-second version)
+  MY PROJECT: A puzzle game where the player pushes a box into a goal
+  THE PIECES I NEED TO BUILD:
+  - Player object
+  - Box object
+  - Goal object
+  - Walls object
+  - functions to intialize each level
+  - Retry functionality 
+
+  WHAT I WILL DEMO AT SHOWCASE: I will through the 3 or so levels, and I will make to fail one so I can showcase the retry functionality
 
 ==============================================================================
 Build your project below (and split it into more .py files if it gets big;
 the grader reads all of them). Delete this line and start!
 '''
+import pygame
+from PIL import Image
+#Load files
+floor = pygame.image.load('floor.png')
+gooberImage = pygame.image.load('gooberRight.png')
 
-print("My final project is not built yet!")
+#Define the goober class
+class goober:
+  def __init__(self,x,y,rect):
+    self.x = x
+    self.y = y
+    self.rect = rect
+  
+  def up(self):
+    self.y += 32
+  def rt(self):
+    self.x += 32
+  def dn(self):
+    self.y -= 32
+  def lt(self):
+    self.y -= 32
+
+
+def levelOneSetUp():
+  #make it spawn in all the rects/wall objects for collsion (wall is rect that stops you, box is rect that moves when player pushes it)
+  print('')
+
+def boxPusherMain():
+  #Display setup
+  pygame.display.init()
+  gameScreen = pygame.display.set_mode((256,256))
+  pygame.display.get_surface()
+
+  clock = pygame.time.Clock()
+  
+  #Create instances of objects
+  player = goober(50,50,70)
+
+  print('WASD to move')
+
+  #Main loop
+  gameCont = 0
+  while gameCont == 0:
+    for event in pygame.event.get():
+      if event.type == pygame.QUIT:
+          pygame.quit()
+          gameCont = 1
+    
+    gameScreen.fill("purple")
+    rect = pygame.Rect(100, 100, 101, 101)
+    gameScreen.blit(floor,(0,0))
+
+    if str(pygame.event.get()).find('w') >= 0:
+      player.up
+      print(player.y)
+
+    pygame.display.flip()
+    clock.tick(60)
+
+#MAKE SURE TO CLOSE ALL YOUR FILES!!!
+boxPusherMain()
