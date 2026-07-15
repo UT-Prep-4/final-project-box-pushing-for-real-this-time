@@ -81,18 +81,22 @@ class goober:
   def __init__(self,x,y,rect):
     self.x = x
     self.y = y
-    self.rect = self.rect = pygame.rect.Rect((5, 26, 16, 16))
+    self.rect = self.rect = pygame.rect.Rect((self.x, self.y, 16, 16))
   
   def movement(self):
     key = pygame.key.get_pressed()
-    if key[pygame.K_LEFT]:
-      self.rect.move_ip(-1, 0)
-    if key[pygame.K_RIGHT]:
-      self.rect.move_ip(1, 0)
-    if key[pygame.K_UP]:
-      self.rect.move_ip(0, -1)
-    if key[pygame.K_DOWN]:
-      self.rect.move_ip(0, 1)
+    if key == pygame.K_a:
+      self.x -= 5
+      self.rect.move(self.x,self.y)
+    if key == pygame.K_d:
+      self.x += 5
+      self.rect.move(self.x,self.y)
+    if key == pygame.K_w:
+      self.y += 5
+      self.rect.move(self.x,self.y)
+    if key == pygame.K_s:
+      self.y -= 5
+      self.rect.move(self.x,self.y)
     
   def render(self, surface):
     pygame.draw.rect(surface, (0, 0, 128), self.rect)
