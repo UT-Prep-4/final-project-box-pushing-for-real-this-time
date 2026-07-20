@@ -4,15 +4,12 @@
 REPLACE THIS: 2-4 sentences a stranger could understand. What does your program
 do? What makes it cool? This is the paragraph you would put on a resume or in a
 college application, so write it like you're proud of it.
-
+This project was my first foray into object oriented programming, an advanced form of programming that accesses data through methods. I also learned the basics of understanding new modules and unfamiliar syntax.
 ## How to run it
-REPLACE THIS: exact steps. For example: "Run python final_project.py in the
-terminal, then open port 6080 to see the game window. Use the arrow keys to move."
+Run python final_project.py in the terminal, then open port 6080 to see the game window. Use the WASD to move.
 
 ## How it works
-REPLACE THIS: 2-4 sentences on the interesting part of the code. Which function
-does the magic? What was the hardest bug you fixed?
+I used the pygame module for this project so I had access to the rect method. The rect method and its submethod, colliderect, are the bases for the pushing mechanic.
 
 ## Built by
-REPLACE THIS: your name(s), and anything you used for help or inspiration
-(tutorials, art sources, your instructor, teammates).
+Shay Shalit
