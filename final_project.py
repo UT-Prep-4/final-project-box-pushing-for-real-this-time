@@ -158,8 +158,8 @@ class goalMaker():
     pygame.draw.rect(surface, (0, 0, 128), self.rect)
     surface.blit(goal,(self.x,self.y))
   def generate(self):
-    self.x = random.randint(0,224)
-    self.y = random.randint(0,224)
+    self.x = random.randint(0,480)
+    self.y = random.randint(0,480)
     self.rect.update((self.x, self.y, 32, 32))
 
 
@@ -171,7 +171,7 @@ def textDrawer(text,font,color,screen,x,y):
 def boxPusherMain():
   #Display setup
   pygame.display.init()
-  gameScreen = pygame.display.set_mode((256,256))
+  gameScreen = pygame.display.set_mode((512,512))
   pygame.display.get_surface()
 
   clock = pygame.time.Clock()
@@ -221,8 +221,8 @@ def boxPusherMain():
     floorRenderY = 0
     loopY = 0
     loopX = 0
-    while loopY < 8:
-      while loopX < 8:
+    while loopY < 16:
+      while loopX < 16:
         gameScreen.blit(floor,(floorRenderX,floorRenderY))
         floorRenderX += 32
         loopX += 1
